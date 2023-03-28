@@ -1,0 +1,57 @@
+import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+ 
+
+public class Exercise6 {
+
+	public static void main(String[] args) throws IOException {
+		final int ROWS = 4, COLS = 8; 
+		int Count = 0;
+		int ColRev = 0;
+		int Len = 0; 
+		 
+		
+		
+		String strinInput = "";  
+		
+		char [][] myArray = new char[ROWS][COLS];  
+		Len = myArray.length;  
+		
+		Scanner scnr = new Scanner("input.in"); 
+		
+		int i = 0; 
+		for (int r = 0; r < ROWS; r++) { 
+			
+			for ( int c = 0; c < COLS; c++) {
+				myArray[r][c] = strinInput.charAt(i++);
+				myArray[r][c] = '*'; 
+			}
+		}
+			 
+		
+		for (int r = 0; r < ROWS; r++) {
+			ColRev = COLS; 
+			for (int c = 0; c < COLS; c++) {
+				if (Count < Len) { 
+					if (r% 2 == 0) {
+						myArray[r][c] = strinInput.charAt(Count);
+					}
+					else {
+						myArray[r][--ColRev] = strinInput.charAt(Count);
+					}
+					}
+				} 
+				 
+			}
+
+		for (int c = 0; c < COLS; c++) {
+			for(int r = 0; r < ROWS; r++) {
+				System.out.print(myArray[r][c]); 
+			}
+		}
+		scnr.close(); 
+	}
+}
+
+

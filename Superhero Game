@@ -1,0 +1,130 @@
+package app;
+
+public class Batman extends Superhero {
+
+/**
+ * 
+ * @param health for batman
+ */
+	public Batman(int health) {
+		super("Batman", health);
+	}
+
+	
+}
+
+
+package app;
+
+public class Superman extends Superhero{
+/**
+ * 
+ * @param health for superman
+ */
+	public Superman(int health) {
+		super("Superman", health);
+	}
+}
+
+package app;
+
+import java.util.Random;
+/**
+ * Game class
+ *
+ */
+public class Game {
+
+
+	public static void main(String[] args) {
+		/**
+		 * Sets health as random integer
+		 */
+		Random rand = new Random();
+		int health1 = rand.ints(1, (1000 + 1)).findFirst().getAsInt();
+		int health2 = rand.ints(1, (1000 + 1)).findFirst().getAsInt();
+		
+		System.out.println("Creating our Super Hero...");
+		Superman superman = new Superman(health1);
+		Batman batman = new Batman(health2);
+		System.out.println("Super Heros created");
+	/**
+	 * Prints which superhero won	
+	 */
+		System.out.println("Running our game...");
+		while(!superman.isDead() && !batman.isDead()) {
+			superman.attack(batman);
+			batman.attack(superman);
+			
+			if(superman.isDead()) {
+				System.out.println("Batman defeated Superman");
+			}
+			if(batman.isDead()) {
+				System.out.println("Superman defeatead Batman");
+			}
+		}
+
+	}
+
+}
+
+package app;
+
+import java.util.Random;
+/**
+ * 
+ * @author Trisha Dossey
+ *
+ */
+public class Superhero {
+
+/**
+ * Sets up private class properties
+ */
+	private String name;
+	private int health;
+	private boolean isDead;
+	/**
+	 * 
+	 * @param name
+	 * @param health
+	 */
+	public Superhero(String name, int health) {
+		this.name = name;
+		this.health = health;
+	}
+/**
+ * 	
+ * @param opponent gets random number for damage
+ */
+	public void attack(Superhero opponent) {
+		Random rand = new Random();
+		int damage = rand.ints(1, (10 + 1)).findFirst().getAsInt();
+		
+		opponent.determineHealth(damage);
+		System.out.println(String.format("%s has damage of %d and health of %d", opponent.name, damage, opponent.health));
+	}
+/**
+ * 	
+ * @return if the superhero is dead
+ */
+	public boolean isDead() {
+		return this.isDead;
+	}
+	/**
+	 * 
+	 * @param damage determines health status and if dead
+	 */
+	public void determineHealth(int damage) {
+		if(this.health - damage <= 0) {
+			this.health = 0;
+			this.isDead = true;
+		}
+		else {
+			this.health = this.health - damage;
+		}
+	}
+
+	
+}
+

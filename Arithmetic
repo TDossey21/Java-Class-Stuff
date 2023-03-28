@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Arithmetic {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int userNum; 
+		int num1, num2, num3, num4, num5;
+		int sum; 
+		
+		
+		Scanner keyboard = new Scanner(System.in); //Gather input from keyboard
+		
+		System.out.print("Enter positive five digit number: ");
+		userNum = keyboard.nextInt();
+		
+		//Used to extract remainder from 5 digit number entered
+		
+		num1 = userNum / 10000; 
+		num2 = (userNum % 10000) / 1000;
+		num3 = ((userNum % 10000) % 1000) / 100;
+		num4 = (((userNum % 10000) % 1000) % 100) / 10;
+		num5 = userNum % 10;
+		
+		sum = (num1 + num2 + num3 + num4 + num5); 
+		System.out.println("Sum of integers: " + sum);
+		
+		
+		}
+
+	}

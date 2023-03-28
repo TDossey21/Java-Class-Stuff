@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Temperature {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double Fahrenheit;
+		double Celsius;
+		double Celsius2; //Number when Fahrenheit is converted
+		double Fahrenheit2; // Number when Celsius is converted
+		
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.print("Enter a Fahrenheit temperature: "); 
+		Fahrenheit = keyboard.nextInt();
+		
+		Celsius2 = (Fahrenheit - 32) * 5/9; //Convert Fahrenheit to Celsius
+		
+		System.out.print(Fahrenheit + "F"); 
+		System.out.println(" is equivalent to " + Celsius2 + "C");
+		
+		System.out.print("Enter a Celsius temperature: ");
+		Celsius = keyboard.nextInt();
+		
+		Fahrenheit2 = (Celsius * 9/5) + 32; //Convert Celsius to Fahrenheit
+		
+		System.out.print(Celsius + "C");
+		System.out.println(" is equivalent to " + Fahrenheit2 + "F");
+		
+	}
+
+}

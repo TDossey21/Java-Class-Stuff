@@ -1,0 +1,45 @@
+echo "# Java-Class-Stuff" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/TDossey21/Java-Class-Stuff.git
+git push -u origin main
+import java.util.Scanner;
+import java.util.Random;
+
+public class Guess {
+
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		Random rand = new Random(); 
+		int userGuess = 0;
+		int minimum = 1; //Starting minimum
+		int maximum = 10000; //Starting maximum
+		int randInt = rand.nextInt(10000) + 1;
+	
+		
+		
+		while (userGuess != randInt) { //Will loop until userGuess equals randInt
+			
+			System.out.print("Please enter a value " + (minimum) + " to " + (maximum) + ":" ); 
+			userGuess = scnr.nextInt();
+			
+			
+			if ((userGuess>randInt && userGuess<=10000)) {
+				System.out.println("Lower");
+				maximum = userGuess - 1; //Changes to reflect new range for maximum
+			}
+			else if ((userGuess<randInt && userGuess>=1)) {
+				System.out.println("Higher");
+				minimum = userGuess + 1; //Changes to reflect new range for minimum
+			}
+			else if (userGuess == randInt) {
+				System.out.println("Winner");
+				break;
+			}
+		}
+		scnr.close();
+	}
+
+}
